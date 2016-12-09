@@ -8,3 +8,4 @@
       <h1>Photo Gallery</h1>
     </div>
     <div id="main">
+	&laquo; <a href="index.php">Home</a>

@@ -36,5 +36,14 @@ function __autoload($class_name) {
 function include_layout_template($template="") {
 	include(SITE_ROOT.DS.'public'.DS.'layouts'.DS.$template);
 }
+ 
+ 
+
+function datetime_to_text($datetime="") {
+  $unixdatetime = strtotime($datetime);
+  return strftime("%B %d, %Y at %I:%M %p", $unixdatetime);
+}
+
+
 
 ?>

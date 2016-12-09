@@ -11,7 +11,7 @@ require('config.php');
 			 return false;
 		}else{ 
 			//connected
-			echo "connected";
+			//echo "connected";
           }
 	}
  
@@ -38,7 +38,7 @@ require('config.php');
     public function update($query){ 
         if( $this->conn->query($query)){
            echo "update successful"; 
-             
+           return true;  
         }else{
             return false;
         } 
@@ -53,9 +53,14 @@ require('config.php');
         return $escaped_string;
     }
 
+	//Fetch Methods
 	public function fetch_array($result_set){
 		return mysqli_fetch_array($result_set); 
 	}
+	public function fetch_assoc($result_set){
+		return mysqli_fetch_assoc($result_set); 
+	}
+	 
 
 	// database neutral methods
 	public function num_rows($result_set){
@@ -64,11 +69,11 @@ require('config.php');
 	
 	public function insert_id(){
 		//return the last id iinserted over the current db connection
-		return mysqli_insert_id($this->connection); 
+		return mysqli_insert_id($this->conn); 
 	}
 	
 	public function affected_rows(){
-		return mysql_affected_rows($this->connection);
+		return mysqli_affected_rows($this->conn);
 	}
 }
  
