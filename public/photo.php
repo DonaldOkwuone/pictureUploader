@@ -7,10 +7,7 @@
 include("../includes/initialize.php"); 
 
 use Philo\Blade\Blade;
-
-$views = __DIR__ . '/views';
-$cache = __DIR__ . '/cache';
-
+ 
 	if(empty($_GET['id'])) {
 		$session->message("No photograph ID was provided.");
 		redirect_to('index.php');
@@ -44,7 +41,7 @@ $cache = __DIR__ . '/cache';
 	}
 	$comments = $photo->comments();
 	
-$blade = new Blade($views, $cache);
+$blade = new Blade(VIEWS, CACHE);
 echo $blade->view('')->make('photo', [
 		'photo'=> $photo, 
 		'session' => $session,

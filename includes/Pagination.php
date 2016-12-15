@@ -52,7 +52,7 @@ class Pagination extends DatabaseObject {
 		$sql = "SELECT * FROM {$table_name} ";
 		$sql .= "LIMIT {$this->per_page} ";
 		$sql .= "OFFSET {$this->offset()} ";
-		$photos = Photograph::findBySql($sql);
+		$photos = Post::findBySql($sql);
 		return $photos;
 	}
 	public function getColumnNames($class_name =  'comment'){

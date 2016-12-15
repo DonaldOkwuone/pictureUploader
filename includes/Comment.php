@@ -5,15 +5,15 @@ class Comment extends DatabaseObject{
 	public static $table_name= 'comments' ;
 	
 	public $id;
-	public $photograph_id;
+	public $post_id;
 	public $created;
 	public $author;
 	public $body;
 	
-	public static function make($photo_id, $author="Anonymouse", $body=""){
-		if(!empty($photo_id) && !empty($author) && !empty($body)  ){
+	public static function make($post_id, $author="Anonymouse", $body=""){
+		if(!empty($post_id) && !empty($author) && !empty($body)  ){
 			$comment = new self();
-			$comment->photograph_id = (int) $photo_id; 
+			$comment->post_id = (int) $post_id; 
 			$comment->created = strftime("%y-%m-%d %H:%M:%S", time()) ;
 			$comment->author = $author;
 			$comment->body = $body;
@@ -24,13 +24,13 @@ class Comment extends DatabaseObject{
 		
 	}
 	
-	public static function findCommentsOn($photo_id=0){
+	public static function findCommentsOn($id=0){
 		//Using a Foreign-Key here
 		//So custom find function() is needed
 		global $connection;
-		$sql = "SELECT * FROM Comments WHERE photograph_id = ";
-		$sql .= $connection->real_escape_string($photo_id) . " ORDER BY created ASC ";
-		return self::findBySql($sql);
+		$sql = "SELECT * FROM Comments WHERE post_id =";
+		$sql .= $connection->real_escape_string($id) . " ORDER BY created ASC ";
+		return static::findBySql($sql);
 	}
 	
 	public static function delete($id) {

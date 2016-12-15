@@ -8,6 +8,7 @@ class DatabaseObject{
 		global  $connection;
 		$record1 = $connection->select("SELECT * FROM ".static::$table_name ." LIMIT 2");
 		$row  = $connection->fetch_assoc($record1);
+		//return the column names
 		return array_keys($row);
 	}
 	

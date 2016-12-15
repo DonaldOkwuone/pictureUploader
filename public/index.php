@@ -15,12 +15,7 @@
 |
 */
 
-
-
 use Philo\Blade\Blade;
-
-$views = __DIR__ . '/views';
-$cache = __DIR__ . '/cache';
 
 include("../includes/initialize.php");
 
@@ -32,51 +27,36 @@ $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 3;
 
 //3. Total record count ($total_count) a single number
-$total_count = Photograph::countAll();
+$total_count = Post::countAll();
 
 
 //Find all photos 
-//Use pagination instead
-//$photos = Photograph::findAll();
+//Use pagination instead 
 
 $pagination = new Pagination($page, $per_page, $total_count);
 
 //Instead of finding all records, just find the records
 //for this page 
-$photos = $pagination->paginate('photographs');
+$posts = $pagination->paginate('posts');
+$post = Post::findById(1);
+ 
+$most_read = Post::getMostRead();
 
+$blade = new Blade(VIEWS, CACHE);
 
-$blade = new Blade($views, $cache); 
-echo $blade->view('')->make('index', [
+//echo Url::asset('css');
+//echo Url::makeLink('e','e');
+ 
+ echo $blade->view('')->make('index', [
 		'page'=> $page, 
 		'per_page' => $per_page,
 		'total_count' => $total_count,
-		'photos' => $photos,
+		'posts' => $posts,
+		'post' => $post,
 		'pagination' => $pagination,
-		'connection' => $connection
+		'connection' => $connection,
+		'most_read' => $most_read
 		] )->render();
 
  
-/*
-$smarty = new SmartyBC();
-$smarty->template_dir = 'templates';
-$smarty->compile_dir = 'tmp'; 
-
-$smarty->assign("page",$page);
-$smarty->assign("per_page",$per_page);
-$smarty->assign("total_count",$total_count);
-$smarty->assign_by_ref('photos',$photos);
-$smarty->assign_by_ref('pagination',$pagination);
-$smarty->assign("connection",$connection);
-
-$config['date'] = '%I:%M %p';
-$config['time'] = '%H:%M:%S';
-$smarty->assign('config', $config);
-$smarty->assign('yesterday', strtotime('-1 day'));
-
-$smarty->display('index.tpl');
-*/
-
- 
-//echo "offset: ".$pagination->offset();
-?>
+ ?>

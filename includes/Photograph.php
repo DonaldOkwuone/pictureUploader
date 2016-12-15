@@ -119,7 +119,7 @@ class Photograph extends DatabaseObject{
 		//remove database entry
 		//delete the file
 		if($file = parent::findById($id)){
-			print_r($file);
+			//print_r($file);
 			chdir('..');
 			if(unlink($file->imagePath() )){
 				if( parent::delete($id) ){
