@@ -6,7 +6,7 @@ class DatabaseObject{
 	//Common database Methods
 	public function getFieldNames(){
 		global  $connection;
-		$record1 = $connection->select("SELECT * FROM ".static::$table_name ." LIMIT 2");
+		$record1 = $connection->select("SELECT * FROM ".static::$table_name ." LIMIT 2 ");
 		$row  = $connection->fetch_assoc($record1);
 		//return the column names
 		return array_keys($row);
@@ -45,7 +45,7 @@ class DatabaseObject{
 		return array_shift($row);
 	}
 	
-	private static function instantiate($record){
+	public static function instantiate($record){
 		/*
 		$object = new self;
 		$object->id = $record['id'];
@@ -136,7 +136,7 @@ class DatabaseObject{
 		}
 		$sql = "UPDATE ".static::$table_name." SET ";
 		$sql .= join(", ", $attribute_pairs);
-		$sql .= " WHERE id=". $connection->escape_value($this->id);
+		$sql .= " WHERE id=". $connection->real_escape_string($this->id);
 	  $connection->query($sql);
 	  return ($connection->affected_rows() == 1) ? true : false;
 	}

@@ -5,26 +5,16 @@ Add a new Post
 
 	<?php if(!empty($message) ): ?>
 		<div class="alert alert-success">
-			<?php echo e(output_message($message)); ?>
+			<?php echo output_message($message); ?>
 
 			
 		</div>
 	<?php endif; ?>
 	
-	<!--
-	<?php if(count($errors) > 0): ?>
-		<div class="alert alert-danger">
-			<strong> Whoops!</strong> Some fields were left blank.<br><br>
-			<ul>
-				<?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-					<li> <?php echo e($error); ?> </li>
-				<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>	
-			</ul>
-	<?php endif; ?>
-	-->
-	 
-	<form action="<?php echo e($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data" > 
 
+	 
+	<form action="<?php echo e($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" > 
+         
 		<div class="form-group">
 			<label for="title">Title</label>
 			<input type="text" class="form-control" name="title" id="title" placeholder="Title of Post">
@@ -45,21 +35,20 @@ Add a new Post
 				<option value="<?php echo $category->id ?>" ><?php echo $category->title ?></option> 
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		</select>
-		</div>
-	 
-		  <div class="form-group">
+		</div> 
+		<div class="form-group">
 			<label for="image">Featured Image</label>
-			<input type="file" id="image" name="image" >
+			<input type="file"  name="image" >
 			<p class="help-block">Upload an image associated with post</p>
-		  </div>
+		</div>
 		  
 		  
-		  <div class="checkbox">
+		<div class="checkbox">
 			<label>
 			  <input type="checkbox" name="published" value="1"> Publish Now? 
 			</label>
-		  </div>
-		  
+		 </div>
+		 <input type="hidden" name="hits" value="1"> 
 		  
 		  <input type="submit" name="submit" value="Submit" class="btn btn-default" >
 	</form>

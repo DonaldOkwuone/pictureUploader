@@ -34,7 +34,7 @@ class Session {
     }
   }
   
-  public function logout() {
+    public function logout() {
     unset($_SESSION['user_id']);
     unset($this->user_id);
     $this->logged_in = false;
@@ -49,7 +49,7 @@ class Session {
       $this->logged_in = false;
     }
   }
-  public function message($msg="") {
+    public function message($msg="") {
 	  if(!empty($msg)) {
 	    // then this is "set message"
 	    // make sure you understand why $this->message=$msg wouldn't work
