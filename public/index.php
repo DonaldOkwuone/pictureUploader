@@ -19,7 +19,6 @@ use Philo\Blade\Blade;
 
 include("../includes/initialize.php");
 
-
 //1. the current page number ($current_page)
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 
@@ -44,8 +43,6 @@ $most_read = Post::getMostRead();
 
 $blade = new Blade(VIEWS, CACHE);
 
-//echo Url::asset('css');
-//echo Url::makeLink('e','e');
  
  echo $blade->view('')->make('index', [
 		'page'=> $page, 
@@ -57,6 +54,7 @@ $blade = new Blade(VIEWS, CACHE);
 		'connection' => $connection,
 		'most_read' => $most_read
 		] )->render();
+
 
  
  ?>
