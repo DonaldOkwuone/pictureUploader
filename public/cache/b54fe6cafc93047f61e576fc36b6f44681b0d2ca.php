@@ -1,8 +1,7 @@
-@extends('master')
-@section('title')
+<?php $__env->startSection('title'); ?>
 	Welcome To RedCanon
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 	<div class="about">
 		<div class="container">
@@ -10,15 +9,15 @@
 				<div class="col-md-8 about-left">
 					<div class="about-one">
 						<p>Latest Article</p>
-						<h3>{{$post->title}}</h3>
+						<h3><?php echo e($post->title); ?></h3>
 					</div>
 					<div class="about-two">
 						<?php
 							$link_to_image = $post->image;
 						?>
-						<a href="post.php?id={{$post->id}}"><img src=" {{ URL::asset('/images/'.$post->image) }} " title="{{$post->title}}" alt="{{$post->title}}" /></a>
-						<p>Posted by <a href="#">{{$post->author}}</a> on {{datetime_to_text($post->created_at)}} <a href="#">comments({{ count($post->comments()) }})</a></p>
-						<p> {{$post->body}}</p>
+						<a href="post.php?id=<?php echo e($post->id); ?>"><img src=" <?php echo e(URL::asset('/images/'.$post->image)); ?> " title="<?php echo e($post->title); ?>" alt="<?php echo e($post->title); ?>" /></a>
+						<p>Posted by <a href="#"><?php echo e($post->author); ?></a> on <?php echo e(datetime_to_text($post->created_at)); ?> <a href="#">comments(<?php echo e(count($post->comments())); ?>)</a></p>
+						<p> <?php echo e($post->body); ?></p>
 						<div class="about-btn">
 							<a href="post.php?id=<?php echo $post->id; ?>">Read More</a>
 						</div>
@@ -35,21 +34,21 @@
 						
 							<div class="a-1">
 							
-								@foreach($posts as $post)
+								<?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
 									<div class="col-md-6 abt-left">
-										<a href="single.html"><img src="{{ URL::asset('/images/'.$post->image) }}" alt="" /></a>
+										<a href="single.html"><img src="<?php echo e(URL::asset('/images/'.$post->image)); ?>" alt="" /></a>
 										<h6> Red Canon</h6>
 										
 										<?php $new_title = substr($post->title , 0, 20) ?>
 										<?php $new_title = $new_title." ..." ?>
 										
-										<h3><a href="post.php?id=<?php echo $post->id; ?>">{{$new_title}}</a></h3>
+										<h3><a href="post.php?id=<?php echo $post->id; ?>"><?php echo e($new_title); ?></a></h3>
 											 <?php $new_str = substr($post->body , 0, 50) ?>
 											<?php  $new_str = $new_str." ..." ?>
-										<p>{{$new_str}}</p>
-										<label>{{datetime_to_text($post->created_at)}}</label>
+										<p><?php echo e($new_str); ?></p>
+										<label><?php echo e(datetime_to_text($post->created_at)); ?></label>
 									</div>
-								@endforeach
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 								
 								<div class="clearfix"></div>
 							</div>
@@ -62,19 +61,20 @@
 					<div class="abt-1">
 						<h3>ABOUT US</h3>
 						<div class="abt-one">
-							<img class="img-responsive" src="{{ URL::asset('/images/gun.png') }}" alt="" />
+							<img class="img-responsive" src="<?php echo e(URL::asset('/images/gun.png')); ?>" alt="" />
 							<p> Need to read up some random ramblings about Arsenal FC., look no further!</p>
 							<div class="a-btn">
-								{!! URL::link('Read More', 'about.php') !!}
+								<?php echo URL::link('Read More', 'about.php'); ?>
+
 							</div>
 						</div>
 					</div>
 					<div class="abt-2">
 						<h3>Most Read</h3>
 						<ul>
-						@foreach($most_read as $post)
-							<li><a href="post.php?id={{$post->id}}">{{$post->title}} </a></li>
-						@endforeach
+						<?php $__currentLoopData = $most_read; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+							<li><a href="post.php?id=<?php echo e($post->id); ?>"><?php echo e($post->title); ?> </a></li>
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 						</ul>	
 							 							
 					</div>
@@ -106,4 +106,5 @@
 			</div>		
 		</div>
 	</div>
-@endsection('content')
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

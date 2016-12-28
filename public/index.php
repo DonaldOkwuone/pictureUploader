@@ -1,4 +1,5 @@
 <?php
+include("../includes/initialize.php");
 /*
 *Index page controller
 *
@@ -15,9 +16,8 @@
 |
 */
 
-use Philo\Blade\Blade;
+ use Philo\Blade\Blade;
 
-include("../includes/initialize.php");
 
 //1. the current page number ($current_page)
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -44,7 +44,7 @@ $most_read = Post::getMostRead();
 $blade = new Blade(VIEWS, CACHE);
 
  
- echo $blade->view('')->make('index', [
+ echo $blade->view()->make('index', [
 		'page'=> $page, 
 		'per_page' => $per_page,
 		'total_count' => $total_count,
@@ -56,5 +56,4 @@ $blade = new Blade(VIEWS, CACHE);
 		] )->render();
 
 
- 
  ?>
