@@ -3,7 +3,7 @@
 	Admin: All Categories
  @endsection
  @section('content')
- <h1 class="page-header">Dashboard</h1>
+ <h1 class="page-header">Blog Categories</h1>
 	    @if(!empty($message) )
 		<div class="alert alert-success">
 			<ul> 
@@ -11,7 +11,7 @@
 			</ul>
 		</div>
 		@endif
-	      <h2 class="sub-header">Blog Categories </h2>
+	      <h2 class="sub-header">{!! Url::link('Add Category', 'add_category.php') !!} </h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -30,12 +30,11 @@
 				  <td>{{$category->id}}</td>
                   <td>{{$category->title}}</td>
                   <td>{{$category->description}}</td> 
-                  <td><a href="/category/<?php echo $category->id; ?>">EDIT</a></td>
+                  <td><a href="edit_category.php?id=<?php echo $category->id; ?>">EDIT</a></td>
                   <td>
-					<form action="/category/{{$category->id}}" method="post" >
+					<form action="edit_category.php?id={{$category->id}}" method="post" >
 						
-						<input type="hidden" name="_method" value="delete" >
-						<input type="hidden" name="_token" value="">
+						<input type="hidden" name="_method" value="delete" > 
 						<input type="submit" name="submit" value="Delete">
 						
 					</form>

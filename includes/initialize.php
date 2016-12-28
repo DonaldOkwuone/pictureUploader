@@ -30,6 +30,7 @@ require_once(LIB_PATH.DS.'functions.php');
 
 // load core objects
 require_once(LIB_PATH.DS.'MYSQLDatabase.php');
+//require_once(LIB_PATH.DS.'PDOClass.php');
 require_once(LIB_PATH.DS.'DatabaseObject.php');
 require_once(LIB_PATH.DS.'Session.php');
 require_once(LIB_PATH.DS.'Logger.php');  
@@ -45,6 +46,7 @@ require_once(LIB_PATH.DS.'Category.php');
 
 require_once(LIB_PATH.DS.'Pagination.php');
 require_once(LIB_PATH.DS.'Url.php');
+require_once(LIB_PATH.DS.'Message.php');
 
 require_once(__DIR__ .DS.'../vendor/autoload.php'); 
 //

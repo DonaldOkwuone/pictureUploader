@@ -7,6 +7,9 @@ $blade = new Blade(A_VIEWS, A_CACHE);
 
 $categories = Category::findAll();
 
+//Post Controller add function 
+//This could be added to a web service with a bunch of functions 
+
 if(isset($_POST['submit'] ) ){
 	$title = $connection->real_escape_string( $_POST['title'] );
 	$author = $connection->real_escape_string($_POST['author']);
@@ -17,7 +20,8 @@ if(isset($_POST['submit'] ) ){
 	$image_name = basename($image['name']) ;
 	$caption = $connection->real_escape_string($_POST['title']);
 	$published = $connection->real_escape_string($_POST['published']);
-
+    $created_a = strftime("%y:%m:%d %H:%M", time());
+    $updated_a = '' ;
 		
 	$values = [
 	    'id' => '',
@@ -28,7 +32,9 @@ if(isset($_POST['submit'] ) ){
 		'category' => $category,
 		'image' => $image_name,
 		'caption' => $caption,
-		'published' => $published
+		'published' => $published,
+		'created_a' => $created_a,
+		'updated_a' => $updated_a
 		];
 	$photo = new Photograph();
 	$photo->cation = $caption;
@@ -41,11 +47,11 @@ if(isset($_POST['submit'] ) ){
 			
 			
 		}else{
-			echo "failed to instantiate";
+			echo "Failed to instantiate";
 		}
 		 $session->message("Post Added Successfully");
 		 redirect_to("add_post.php");
-		
+		 exit;
 	}else{
 		foreach($photo->errors as $error){
 			$session->message($error);
@@ -64,6 +70,7 @@ if(isset($_POST['submit'] ) ){
  
 	exit;
 }
+//Page just loaded and form has'nt been submiitted
 echo $blade->view()->make('add_post', [
 	'categories' => $categories,
 	'message' => $message, 

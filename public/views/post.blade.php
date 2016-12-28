@@ -7,9 +7,9 @@
 <!--start-single-->
 	<div class="single">
 		<div class="container">
-				<div class="single-top">
-				
+				<div class="single-top">	
 					<img class="img-responsive" src="{{URL::asset('images/'.$post->image )}}" alt=" ">
+						
 					<div class=" single-grid">
 						<h4>{{$post->title}}</h4>				
 							<ul class="blog-ic">
