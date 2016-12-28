@@ -44,6 +44,21 @@ function datetime_to_text($datetime="") {
   return strftime("%B %d, %Y at %I:%M %p", $unixdatetime);
 }
 
+function h($string)
+{
+	return htmlspecialchars($string);
+}
+
+function j($string)
+{
+	return json_encode($string);
+}
+
+function u($string)
+{
+	return urlencode($string);
+}
+
 
 
 ?>

@@ -38,7 +38,7 @@ $pagination = new Pagination($page, $per_page, $total_count);
 //Instead of finding all records, just find the records
 //for this page 
 $posts = $pagination->paginate('posts');
-$post = Post::findById(1);
+$post = Post::findById(2);
  
 $most_read = Post::getMostRead();
 

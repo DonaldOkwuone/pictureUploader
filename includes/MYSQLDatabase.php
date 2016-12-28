@@ -37,7 +37,7 @@ require('config.php');
 	
     public function update($query){ 
         if( $this->conn->query($query)){
-           echo "update successful"; 
+           //echo "update successful"; 
            return true;  
         }else{
             return false;

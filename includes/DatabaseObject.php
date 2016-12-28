@@ -46,6 +46,7 @@ class DatabaseObject{
 	}
 	
 	public static function instantiate($record){
+		//Helps create an object using an array of the object fetched
 		/*
 		$object = new self;
 		$object->id = $record['id'];
@@ -137,7 +138,7 @@ class DatabaseObject{
 		$sql = "UPDATE ".static::$table_name." SET ";
 		$sql .= join(", ", $attribute_pairs);
 		$sql .= " WHERE id=". $connection->real_escape_string($this->id);
-	  $connection->query($sql);
+	  $connection->update($sql);
 	  return ($connection->affected_rows() == 1) ? true : false;
 	}
 

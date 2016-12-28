@@ -10,7 +10,7 @@ class Category extends DatabaseObject{
 	public $created_at;
 	public $updated_at;
 	
-	
+	 
 	
 }
 
