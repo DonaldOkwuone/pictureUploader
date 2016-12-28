@@ -8,7 +8,7 @@
 	<div class="single">
 		<div class="container">
 				<div class="single-top">
-						<a href='<?php echo e(link('/')); ?>'><img class="img-responsive" src='<?php echo e(URL::asset('. echo $post->image.')); ?>' alt=" "></a>
+						<a href='<?php echo e(link('/')); ?>'><img class="img-responsive" src=" <?php echo e(URL::asset(  'images/'.$post->image )); ?>" alt=" "></a>
 					<div class=" single-grid">
 						<h4><?php echo e($post->title); ?></h4>				
 							<ul class="blog-ic">

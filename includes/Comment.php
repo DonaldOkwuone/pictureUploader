@@ -28,8 +28,9 @@ class Comment extends DatabaseObject{
 		//Using a Foreign-Key here
 		//So custom find function() is needed
 		global $connection;
-		$sql = "SELECT * FROM Comments WHERE post_id =";
+		$sql = "SELECT * FROM ".static::$table_name." WHERE post_id = ";
 		$sql .= $connection->real_escape_string($id) . " ORDER BY created ASC ";
+		//echo $sql;
 		return static::findBySql($sql);
 	}
 	
