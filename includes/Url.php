@@ -6,7 +6,7 @@ class URL{
 	
 	public static function asset($file){
 		$http = 'http://';
-		$host = $_SERVER['HTTP_HOST'].'/redCannon/';
+		$host = $_SERVER['HTTP_HOST'].'/blog/';
 		$directory = 'public/'; 
 		
 		$local_link = $http.$host.$directory.$file; 

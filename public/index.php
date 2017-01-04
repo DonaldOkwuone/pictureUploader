@@ -1,4 +1,5 @@
 <?php
+include("../includes/initialize.php");
 error_reporting(E_ALL);
 /*
 *Index page controller
@@ -16,9 +17,7 @@ error_reporting(E_ALL);
 |
 */
 
-use Philo\Blade\Blade;
-
-include("../includes/initialize.php");
+ use Philo\Blade\Blade;
 
 
 //1. the current page number ($current_page)
@@ -47,10 +46,8 @@ $most_read = Post::getMostRead();
 
 $blade = new Blade(VIEWS, CACHE);
 
-//echo Url::asset('css');
-//echo Url::makeLink('e','e');
  
- echo $blade->view('')->make('index', [
+ echo $blade->view()->make('index', [
 		'page'=> $page, 
 		'per_page' => $per_page,
 		'total_count' => $total_count,
@@ -62,5 +59,5 @@ $blade = new Blade(VIEWS, CACHE);
 		'number_of_comments' => $number_of_comments,
 		] )->render();
 
- 
+
  ?>

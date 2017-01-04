@@ -4,6 +4,11 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+.pixie
+{
+	width:600px;
+	height:300px;
+}
 @font-face {
     font-family: 'RobotoSlab-Regular';
     src:url(../fonts/RobotoSlab-Regular.ttf) format('truetype');
@@ -237,7 +242,7 @@ ul.navig li a.active{
 /*--Header-Ends--*/
 /*--banner-starts--*/
 .banner-top{
-	background:url(../images/redCannon.jpg) no-repeat;
+	background:url(../images/redCannon.jpg) no-repeat; 
 	min-height:600px;
 	background-size:cover;
 	-webkit-background-size:cover;
