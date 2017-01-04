@@ -41,9 +41,7 @@ $pagination = new Pagination($page, $per_page, $total_count);
 $posts = $pagination->paginate('posts');
 $post = Post::findById(2);
 $number_of_comments = count($post->comments()) ;
-echo $post->id;
-var_dump($number_of_comments);
-echo $number_of_comments  ;
+
  
 $most_read = Post::getMostRead();
 
