@@ -63,8 +63,8 @@
 						<div class="abt-one">
 							<img class="img-responsive" src="<?php echo e(URL::asset('/images/gun.png')); ?>" alt="" />
 							<p> Need to read up some random ramblings about Arsenal FC., look no further!</p>
-							<div class="a-btn">
-								<?php echo URL::link('Read More', 'about.php'); ?>
+							<div class="a-btn"> 
+									<?php echo Url::link('ABOUT US', 'about.php' ); ?>
 
 							</div>
 						</div>

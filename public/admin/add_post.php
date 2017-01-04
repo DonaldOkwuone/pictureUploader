@@ -24,7 +24,7 @@ if(isset($_POST['submit'] ) ){
     $updated_a = '' ;
 		
 	$values = [
-	    'id' => '',
+	     
 		'title' => $title,
 		'author' => $author,
 		'body' => $body,
@@ -33,23 +33,32 @@ if(isset($_POST['submit'] ) ){
 		'image' => $image_name,
 		'caption' => $caption,
 		'published' => $published,
-		'created_a' => $created_a,
-		'updated_a' => $updated_a
+		'added_on' => $created_a,
+		'created_at' => $created_a,
+		'updated_at' => $created_a
 		];
 	$photo = new Photograph();
-	$photo->cation = $caption;
+	 
+	$photo->caption = $caption;
 	$photo->attach_file($_FILES['image']);
 	if($photo->save() ){
+		//echo "true";
 		if($post =  Post::instantiate($values)){
+			var_dump($post);
 			if($post->save()){
 				$session->message("Post Added Successfully");
+			}else
+			{
+				
+				$session->message("Post Not Added! ");
+				 die();
 			}
 			
 			
 		}else{
 			echo "Failed to instantiate";
 		}
-		 $session->message("Post Added Successfully");
+		 //$session->message("Post Added Successfully");
 		 redirect_to("add_post.php");
 		 exit;
 	}else{

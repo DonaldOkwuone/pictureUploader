@@ -1,1 +1,5 @@
 public/cahche/
+public/admin/cache/
+includes/config.php
+includes/initialize.php
+

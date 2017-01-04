@@ -48,8 +48,9 @@ class Post extends DatabaseObject{
 	}
 	public function save() {
 	  // A new record won't have an id yet.
-	  return !empty($this->id) ? $this->update() : $this->create();
+	  return isset($this->id) ? $this->update() : $this->create();
 	}
+	/*
 	public function create() {
 		global $connection;
 		// Don't forget your SQL syntax and good habits:
@@ -57,6 +58,7 @@ class Post extends DatabaseObject{
 		// - single-quotes around all values
 		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
+		unset($attributes['id']);
 		$sql = "INSERT INTO ".static::$table_name." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
@@ -69,7 +71,7 @@ class Post extends DatabaseObject{
 			return false;
 		}
 	}
-
+*/
 	
 }
 

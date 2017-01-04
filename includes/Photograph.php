@@ -82,6 +82,7 @@ class Photograph extends DatabaseObject{
 			if(move_uploaded_file($this->temp_path, $target_path)) {
 		  	// Success
 				// Save a corresponding entry to the database
+				//var_dump($this);
 				if($this->create()) {
 					// We are done with temp_path, the file isn't there anymore
 					unset($this->temp_path);
@@ -90,6 +91,7 @@ class Photograph extends DatabaseObject{
 			} else {
 				// File was not moved.
 				$this->errors[] = "The file upload failed, possibly due to incorrect permissions on the upload folder.";
+				echo "failed to add photograph to mysql";
 				return false;
 			}
 		}

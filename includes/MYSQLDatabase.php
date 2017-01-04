@@ -31,7 +31,7 @@ require('config.php');
         if($this->conn->query($query)){ 
              return true;
         }else{
-            echo "Syntax error failed";
+            echo "Syntax error failed...Failed to insert New Record ".mysqli_error($this->conn);
         }
     }
 	
@@ -40,6 +40,7 @@ require('config.php');
            //echo "update successful"; 
            return true;  
         }else{
+			echo "Syntax error failed...Failed to Update Record ".mysqli_error($this->conn);
             return false;
         } 
     }

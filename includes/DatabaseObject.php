@@ -110,6 +110,8 @@ class DatabaseObject{
 		// - single-quotes around all values
 		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
+		unset($attributes['id'] );
+		print_r($attributes);
 		$sql = "INSERT INTO ".static::$table_name." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";
@@ -119,6 +121,7 @@ class DatabaseObject{
 			$this->id = $connection->insert_id();
 			return true;
 		} else {
+			var_dump($sql);
 			return false;
 		}
 	}
