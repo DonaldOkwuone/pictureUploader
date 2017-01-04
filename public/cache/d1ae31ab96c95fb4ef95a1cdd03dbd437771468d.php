@@ -54,7 +54,8 @@
 							</div>
 						
 						 <!-- Pagination links -->
-						
+						<?php echo $pagination->outputPagination($_SERVER['PHP_SELF']); ?>
+
 					</div>	
 				</div>
 				<div class="col-md-4 about-right heading">

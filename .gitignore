@@ -1,5 +1,12 @@
 public/cahche/
+<<<<<<< HEAD
 public/admin/cache/
 includes/config.php
 includes/initialize.php
+=======
+includes/config.php
+includes/initialize.php
+public/admin/cache/
+includes/Url.php
+>>>>>>> 2c67d61150e028c1d90019fe44820f7c2e25540b
 
