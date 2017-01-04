@@ -50,8 +50,10 @@ class Pagination extends DatabaseObject {
 	public function paginate($table_name){
 		//$table_name = trim($table_name);
 		$sql = "SELECT * FROM {$table_name} ";
+		$sql .= "ORDER BY added_on DESC ";
 		$sql .= "LIMIT {$this->per_page} ";
 		$sql .= "OFFSET {$this->offset()} ";
+		
 		$photos = Post::findBySql($sql);
 		return $photos;
 	}
