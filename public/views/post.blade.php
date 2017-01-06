@@ -11,13 +11,13 @@
 					<img class="img-responsive" src="{{URL::asset('images/'.$post->image )}}" alt=" ">
 						
 					<div class=" single-grid">
-						<h4>{{$post->title}}</h4>				
+						<h4>{!! $post->title !!}</h4>				
 							<ul class="blog-ic">
 								<li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i>{{$post->author}}</span> </a> </li>
 		  						 <li><span><i class="glyphicon glyphicon-time"> </i>{{ datetime_to_text($post->added_on) }}</span></li>		  						 	
 		  						 <li><span><i class="glyphicon glyphicon-eye-open"> </i>Hits:{{$post->hits}}</span></li>
 		  					</ul>		  						
-						<p> {{$post->body}}</p>
+						<p> {!! $post->body !!}</p>
 					</div>
 					 
 					<div class="comments heading">

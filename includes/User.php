@@ -31,7 +31,7 @@ class User extends DatabaseObject{
 		$username = $connection->real_escape_string($username);
 		$password = $connection->real_escape_string($password);
 		$sql = "SELECT * FROM users ";
-		$sql .= "WHERE username = '{$username}' ";
+		$sql .= "WHERE email = '{$username}' ";
 		$sql .= "AND password = '{$password}' ";
 		$sql .= "LIMIT 1";
 		

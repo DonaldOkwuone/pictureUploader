@@ -3,15 +3,15 @@
 	Admin: All Categories
  <?php $__env->stopSection(); ?>
  <?php $__env->startSection('content'); ?>
- <h1 class="page-header">Dashboard</h1>
+ <h1 class="page-header">Blog Categories</h1>
 	    <?php if(!empty($message) ): ?>
 		<div class="alert alert-success">
 			<ul> 
-					<li><?php echo e(output_message($message)); ?></li> 
+					<li><?php echo output_message($message); ?></li> 
 			</ul>
 		</div>
 		<?php endif; ?>
-	      <h2 class="sub-header">Blog Categories </h2>
+	      <h2 class="sub-header"><?php echo Url::link('Add Category', 'add_category.php'); ?> </h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -30,12 +30,11 @@
 				  <td><?php echo e($category->id); ?></td>
                   <td><?php echo e($category->title); ?></td>
                   <td><?php echo e($category->description); ?></td> 
-                  <td><a href="/category/<?php echo $category->id; ?>">EDIT</a></td>
+                  <td><a href="edit_category.php?id=<?php echo $category->id; ?>">EDIT</a></td>
                   <td>
-					<form action="/category/<?php echo e($category->id); ?>" method="post" >
+					<form action="delete_category.php?id=<?php echo e($category->id); ?>" method="post" >
 						
-						<input type="hidden" name="_method" value="delete" >
-						<input type="hidden" name="_token" value="">
+						<input type="hidden" name="_method" value="delete" > 
 						<input type="submit" name="submit" value="Delete">
 						
 					</form>

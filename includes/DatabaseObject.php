@@ -111,7 +111,7 @@ class DatabaseObject{
 		// - escape all values to prevent SQL injection
 		$attributes = $this->sanitized_attributes();
 		unset($attributes['id'] );
-		print_r($attributes);
+		//print_r($attributes);
 		$sql = "INSERT INTO ".static::$table_name." (";
 		$sql .= join(", ", array_keys($attributes));
 		$sql .= ") VALUES ('";

@@ -7,7 +7,7 @@
 	    @if(!empty($message) )
 		<div class="alert alert-success">
 			<ul> 
-					<li>{{output_message($message) }}</li> 
+					<li>{!! output_message($message) !!}</li> 
 			</ul>
 		</div>
 		@endif
@@ -32,7 +32,7 @@
                   <td>{{$category->description}}</td> 
                   <td><a href="edit_category.php?id=<?php echo $category->id; ?>">EDIT</a></td>
                   <td>
-					<form action="edit_category.php?id={{$category->id}}" method="post" >
+					<form action="delete_category.php?id={{$category->id}}" method="post" >
 						
 						<input type="hidden" name="_method" value="delete" > 
 						<input type="submit" name="submit" value="Delete">

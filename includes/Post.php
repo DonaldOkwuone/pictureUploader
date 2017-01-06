@@ -69,6 +69,23 @@ class Post extends DatabaseObject{
 			return false;
 		}
 	}
+	public function update() {
+	  global $connection;
+		// Don't forget your SQL syntax and good habits:
+		// - UPDATE table SET key='value', key='value' WHERE condition
+		// - single-quotes around all values
+		// - escape all values to prevent SQL injection
+		$attributes = $this->sanitized_attributes();
+		$attribute_pairs = array();
+		foreach($attributes as $key => $value) {
+		  $attribute_pairs[] = "{$key}='{$value}'";
+		}
+		$sql = "UPDATE ".static::$table_name." SET ";
+		$sql .= join(", ", $attribute_pairs);
+		$sql .= " WHERE id=". $connection->real_escape_string($this->id);
+	  $connection->update($sql);
+	  return ($connection->affected_rows() == 1) ? true : false;
+	}
 
 	
 }

@@ -4,6 +4,11 @@
  @endsection
  @section('content')
 
+ 	@if(!empty($message) )
+		<div class="alert alert-success"> 
+			{!! output_message($message) !!}
+		</div> 
+	@endif
           <h2 class="sub-header">Blog Posts </h2>
           <h2 class="sub-header"> {!!URL::link('+Add New Post','add_post.php') !!} </h2>
           <div class="table-responsive">
@@ -27,8 +32,14 @@
                   <td>{{ $post->author }}</td>
                   <td>{{ $post->added_on }}</td>
                   <td>{{ $post->hits }}</td>
-                  <td>{{ $post->hits }}</td>
-                  <td>{{ $post->hits }}</td>
+                  <td>{!! URL::link('Edit', 'edit_post.php?id='.$post->id ) !!}</td> 
+                  <td>
+				  	<form method="post" action="delete_post.php">
+						<input type="hidden" name="id" value="{{ $post->id }}"  >
+						<input type="submit" name="submit" value="DELETE">
+					</form>
+				  </td>
+               
                 </tr>
                 @endforeach  
               </tbody>

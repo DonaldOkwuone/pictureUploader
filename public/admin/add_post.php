@@ -1,6 +1,6 @@
 <?php
 require_once('../../includes/initialize.php'); 
-
+!$session->is_logged_in() ? redirect_to("login.php") : false ;
 use Philo\Blade\Blade;
 
 $blade = new Blade(A_VIEWS, A_CACHE);
@@ -44,7 +44,7 @@ if(isset($_POST['submit'] ) ){
 	if($photo->save() ){
 		//echo "true";
 		if($post =  Post::instantiate($values)){
-			var_dump($post);
+			//var_dump($post);
 			if($post->save()){
 				$session->message("Post Added Successfully");
 			}else

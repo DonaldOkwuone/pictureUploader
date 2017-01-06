@@ -4,6 +4,12 @@
  <?php $__env->stopSection(); ?>
  <?php $__env->startSection('content'); ?>
 
+ 	<?php if(!empty($message) ): ?>
+		<div class="alert alert-success"> 
+			<?php echo output_message($message); ?>
+
+		</div> 
+	<?php endif; ?>
           <h2 class="sub-header">Blog Posts </h2>
           <h2 class="sub-header"> <?php echo URL::link('+Add New Post','add_post.php'); ?> </h2>
           <div class="table-responsive">
@@ -27,8 +33,14 @@
                   <td><?php echo e($post->author); ?></td>
                   <td><?php echo e($post->added_on); ?></td>
                   <td><?php echo e($post->hits); ?></td>
-                  <td><?php echo e($post->hits); ?></td>
-                  <td><?php echo e($post->hits); ?></td>
+                  <td><?php echo URL::link('Edit', 'edit_post.php?id='.$post->id ); ?></td> 
+                  <td>
+				  	<form method="post" action="delete_post.php">
+						<input type="hidden" name="id" value="<?php echo e($post->id); ?>"  >
+						<input type="submit" name="submit" value="DELETE">
+					</form>
+				  </td>
+               
                 </tr>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
               </tbody>

@@ -73,10 +73,10 @@ class Photograph extends DatabaseObject{
 			$target_path = '../'.DS.$this->upload_dir .DS. $this->filename;
 		  
 			// Make sure a file doesn't already exist in the target location
-			if(file_exists($target_path)) {
-				$this->errors[] = "The file {$this->filename} already exists.";
-				return false;
-			}
+			//if(file_exists($target_path)) {
+			//	$this->errors[] = "The file {$this->filename} already exists.";
+			//	return false;
+			//}
 		
 			// Attempt to move the file 
 			if(move_uploaded_file($this->temp_path, $target_path)) {

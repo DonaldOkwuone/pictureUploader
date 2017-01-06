@@ -48,7 +48,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li> {!!URL::link('Dashboard', 'admin.php')!!} </li>
             <li> {!!URL::link('Settings', 'admin.php')!!}</li>
-            <li> {!!URL::link('Profile', 'admin.php')!!}</li> 
+            <li> {!!URL::link('Logout', 'logout.php')!!}</li> 
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">

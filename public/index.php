@@ -38,7 +38,9 @@ $pagination = new Pagination($page, $per_page, $total_count);
 //Instead of finding all records, just find the records
 //for this page 
 $posts = $pagination->paginate('posts');
-$post = Post::findById(2);
+$latest = $posts[0]->id; 
+$post = Post::findById($latest);
+//var_dump($post);
 $number_of_comments = count($post->comments()) ;
 
  

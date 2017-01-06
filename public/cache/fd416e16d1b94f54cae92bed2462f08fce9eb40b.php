@@ -7,17 +7,17 @@
 <!--start-single-->
 	<div class="single">
 		<div class="container">
-				<div class="single-top">
-				
+				<div class="single-top">	
 					<img class="img-responsive" src="<?php echo e(URL::asset('images/'.$post->image )); ?>" alt=" ">
+						
 					<div class=" single-grid">
-						<h4><?php echo e($post->title); ?></h4>				
+						<h4><?php echo $post->title; ?></h4>				
 							<ul class="blog-ic">
 								<li><a href="#"><span> <i  class="glyphicon glyphicon-user"> </i><?php echo e($post->author); ?></span> </a> </li>
 		  						 <li><span><i class="glyphicon glyphicon-time"> </i><?php echo e(datetime_to_text($post->added_on)); ?></span></li>		  						 	
 		  						 <li><span><i class="glyphicon glyphicon-eye-open"> </i>Hits:<?php echo e($post->hits); ?></span></li>
 		  					</ul>		  						
-						<p> <?php echo e($post->body); ?></p>
+						<p> <?php echo $post->body; ?></p>
 					</div>
 					 
 					<div class="comments heading">
